@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".StartFragment">
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".StartFragment">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="138dp"
-            android:text="@string/hello_blank_fragment" />
+            android:text="Choose the game"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="28dp"/>
 
         <Button
             android:id="@+id/start_articles"
-            android:layout_width="177dp"
-            android:layout_height="wrap_content"
-            android:text="Articles game"
+            android:layout_width="199dp"
+            android:layout_height="65dp"
             android:layout_gravity="center"
+            android:text="Articles game"
             android:textAlignment="center" />
-
     </LinearLayout>
-
-
-
-
 </layout>
 
 
