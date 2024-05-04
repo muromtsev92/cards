@@ -10,5 +10,5 @@ data class Noun(
     var article: NominativeArticle = NominativeArticle.NO,
     var germanSingular: String = "",
     var germanPlural: String = "",
-    var russian: String
+    var russian: String = ""
 )

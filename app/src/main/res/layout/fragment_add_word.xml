@@ -2,7 +2,6 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AddWordFragment">
 
     <data>
@@ -27,8 +26,7 @@
         <RadioGroup
             android:id="@+id/genderRadioGroup"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:checkedButton="@={viewModel.selectedRadioValue}">
+            android:layout_height="150dp">
 
             <RadioButton
                 android:id="@+id/radioButtonDer"
@@ -51,24 +49,31 @@
         </RadioGroup>
 
         <EditText
-            android:id="@+id/enterGermanNoun"
+            android:id="@+id/enterGermanNounSingular"
             android:layout_width="match_parent"
             android:layout_height="104dp"
-            android:hint="Enter german"
-            android:text="@={viewModel.newGermanNoun}"/>
+            android:hint="Enter german singular"
+            android:text="@{viewModel.newGermanSingular}"/>
+
+        <EditText
+            android:id="@+id/enterGermanNounPlural"
+            android:layout_width="match_parent"
+            android:layout_height="104dp"
+            android:hint="Enter german plural"
+            android:text="@{viewModel.newGermanPlural}"/>
 
         <EditText
             android:id="@+id/enterRussianNoun"
             android:layout_width="match_parent"
             android:layout_height="113dp"
             android:hint="Enter Russian"
-            android:text="@={viewModel.newRussianNoun}"/>
+            android:text="@{viewModel.newRussian}"/>
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.addPair()}"
+            android:onClick="@{() -> viewModel.addNoun()}"
             android:text="Save" />
 
     </LinearLayout>

@@ -1,10 +1,13 @@
 package com.cardsapp.cards
 
 import android.content.Context
+import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.cardsapp.cards.dao.NounDao
+import com.cardsapp.cards.model.Noun
 
+@Database(entities = [Noun::class], version = 1, exportSchema = false)
 abstract class WordDatabase: RoomDatabase() {
     abstract val nounDao: NounDao
 
@@ -19,7 +22,7 @@ abstract class WordDatabase: RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         WordDatabase::class.java,
-                        "tasks_database"
+                        "word_database"
                     ).build()
                     INSTANCE = instance
                 }

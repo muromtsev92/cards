@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.cardsapp.cards.ArticlesViewModel
+import com.cardsapp.cards.viewmodel.ArticlesViewModel
 import com.cardsapp.cards.databinding.FragmentArticlesBinding
 
 class ArticlesFragment : Fragment() {
