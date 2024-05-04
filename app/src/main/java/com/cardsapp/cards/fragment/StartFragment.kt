@@ -1,4 +1,4 @@
-package com.cardsapp.cards
+package com.cardsapp.cards.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import com.cardsapp.cards.R
+import com.cardsapp.cards.StartViewModel
 import com.cardsapp.cards.databinding.FragmentStartBinding
 
 class StartFragment : Fragment() {

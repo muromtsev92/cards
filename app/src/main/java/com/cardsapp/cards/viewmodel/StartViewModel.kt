@@ -1,4 +1,4 @@
-package com.cardsapp.cards
+package com.cardsapp.cards.viewmodel
 
 import androidx.lifecycle.ViewModel
 
