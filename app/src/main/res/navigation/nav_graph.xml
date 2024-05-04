@@ -7,17 +7,35 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.cardsapp.cards.StartFragment"
+        android:name="com.cardsapp.cards.fragments.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
             android:id="@+id/action_startFragment_to_articlesFragment"
             app:destination="@id/articlesFragment"
             app:popUpTo="@id/startFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_addPairFragment"
+            app:destination="@id/addPairFragment"
+            app:popUpTo="@id/startFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_allWordsFragment"
+            app:destination="@id/allWordsFragment"
+            app:popUpTo="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/articlesFragment"
-        android:name="com.cardsapp.cards.ArticlesFragment"
+        android:name="com.cardsapp.cards.fragments.ArticlesFragment"
         android:label="fragment_articles"
         tools:layout="@layout/fragment_articles" />
+    <fragment
+        android:id="@+id/addPairFragment"
+        android:name="com.cardsapp.cards.fragments.AddPairFragment"
+        android:label="fragment_add_pair"
+        tools:layout="@layout/fragment_add_pair" />
+    <fragment
+        android:id="@+id/allWordsFragment"
+        android:name="com.cardsapp.cards.fragments.AllWordsFragment"
+        android:label="fragment_all_words"
+        tools:layout="@layout/fragment_all_words" />
 </navigation>

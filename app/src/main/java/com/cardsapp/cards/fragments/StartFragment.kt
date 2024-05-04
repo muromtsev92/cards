@@ -1,4 +1,4 @@
-package com.cardsapp.cards
+package com.cardsapp.cards.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import com.cardsapp.cards.R
+import com.cardsapp.cards.StartViewModel
 import com.cardsapp.cards.databinding.FragmentStartBinding
 
 class StartFragment : Fragment() {
@@ -24,6 +26,14 @@ class StartFragment : Fragment() {
 
         binging.startArticles.setOnClickListener{
             view.findNavController().navigate(R.id.action_startFragment_to_articlesFragment)
+        }
+
+        binging.addWords.setOnClickListener{
+            view.findNavController().navigate(R.id.action_startFragment_to_addPairFragment)
+        }
+
+        binging.showWords.setOnClickListener{
+            view.findNavController().navigate(R.id.action_startFragment_to_allWordsFragment)
         }
 
         return view
