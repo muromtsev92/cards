@@ -77,7 +77,6 @@
             android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.addNoun()}"
             android:text="Save" />
 
     </LinearLayout>

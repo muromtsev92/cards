@@ -32,6 +32,13 @@ class AddWordFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        binding.saveButton.setOnClickListener{
+            viewModel.addNoun()
+            binding.enterGermanNounPlural.setText("")
+            binding.enterGermanNounSingular.setText("")
+            binding.enterRussianNoun.setText("")
+        }
+
         return view
     }
 
