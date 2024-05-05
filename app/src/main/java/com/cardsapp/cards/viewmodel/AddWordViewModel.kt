@@ -1,7 +1,8 @@
 package com.cardsapp.cards.viewmodel
 
-import android.widget.RadioGroup
-import androidx.lifecycle.LiveData
+import android.app.Application
+import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cardsapp.cards.dao.NounDao
@@ -11,29 +12,37 @@ import kotlinx.coroutines.launch
 
 class AddWordViewModel(val nounDao: NounDao): ViewModel() {
 
+    var newArticle = NominativeArticle.NO
     var newGermanSingular = ""
     var newGermanPlural = ""
     var newRussian = ""
-    var selectedRadioValue = 0
+    var derChecked = false
+    var dieChecked = false
+    var dasChecked = false
+
 
     fun addNoun(){
         viewModelScope.launch {
             val newNoun = Noun()
-            newNoun.article = getArticle()
+            setArticle()
+            newNoun.article = newArticle
             newNoun.germanSingular = newGermanSingular
             newNoun.germanPlural = newGermanPlural
             newNoun.russian = newRussian
+
             nounDao.insert(newNoun)
         }
     }
 
-
-    private fun getArticle(): NominativeArticle{
-        when(selectedRadioValue){
-            0 -> return NominativeArticle.DER
-            1 -> return NominativeArticle.DIE
-            2 -> return NominativeArticle.DAS
+    private fun setArticle(): Unit{
+        if(derChecked){
+            newArticle = NominativeArticle.DER
+        } else if (dieChecked){
+            newArticle = NominativeArticle.DIE
+        } else if (dasChecked){
+            newArticle = NominativeArticle.DAS
         }
-        return NominativeArticle.NO
+        // TODO: toast notification if not selected
     }
+
 }

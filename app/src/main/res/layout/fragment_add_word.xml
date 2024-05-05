@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragments.AddWordFragment">
 
@@ -20,30 +21,32 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="73dp"
-            android:text="TextView"
-            tools:text="Add words" />
+            android:text="Add words" />
 
         <RadioGroup
             android:id="@+id/genderRadioGroup"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="150dp" >
 
             <RadioButton
                 android:id="@+id/radioButtonDer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="@={viewModel.derChecked}"
                 android:text="DER" />
 
             <RadioButton
                 android:id="@+id/radioButtonDie"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="@={viewModel.dieChecked}"
                 android:text="DIE" />
 
             <RadioButton
                 android:id="@+id/radioButtonDas"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:checked="@={viewModel.dasChecked}"
                 android:text="DAS" />
 
         </RadioGroup>
@@ -53,21 +56,22 @@
             android:layout_width="match_parent"
             android:layout_height="104dp"
             android:hint="Enter german singular"
-            android:text="@{viewModel.newGermanSingular}"/>
+            android:text="@={viewModel.newGermanSingular}"/>
 
         <EditText
             android:id="@+id/enterGermanNounPlural"
             android:layout_width="match_parent"
             android:layout_height="104dp"
             android:hint="Enter german plural"
-            android:text="@{viewModel.newGermanPlural}"/>
+            android:inputType="text"
+            android:text="@={viewModel.newGermanPlural}"/>
 
         <EditText
             android:id="@+id/enterRussianNoun"
             android:layout_width="match_parent"
             android:layout_height="113dp"
             android:hint="Enter Russian"
-            android:text="@{viewModel.newRussian}"/>
+            android:text="@={viewModel.newRussian}"/>
 
         <Button
             android:id="@+id/save_button"

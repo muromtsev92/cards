@@ -19,9 +19,12 @@ interface NounDao {
     @Delete
     suspend fun delete(noun: Noun)
 
-    @Query("SELECT * FROM nouns ORDER BY germanSingular DESC")
+    @Query("SELECT * FROM nouns ORDER BY id DESC")
     fun getAll(): LiveData<List<Noun>>
 
     @Query("SELECT * FROM nouns WHERE id = :id")
     fun getById(id: Long): LiveData<Noun>
+
+    @Query("DELETE FROM nouns")
+    fun deleteAll(): Unit
 }
