@@ -29,5 +29,5 @@ interface NounDao {
     fun deleteAll(): Unit
 
     @Query("SELECT * FROM nouns ORDER BY RANDOM() LIMIT 10")
-    fun getRandomTen(): LiveData<List<Noun>>
+    suspend fun getRandomTen(): List<Noun>
 }

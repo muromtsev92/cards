@@ -3,16 +3,21 @@ package com.cardsapp.cards.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.cardsapp.cards.dao.NounDao
 import com.cardsapp.cards.model.Noun
+import kotlinx.coroutines.launch
 
 
 class ArticlesViewModel(private val nounDao: NounDao): ViewModel() {
 
+    var words: List<Noun>
+        get() = nounDao.getRandomTen()
 
-    var inGameWords: LiveData<List<Noun>> = MutableLiveData(nounDao.getRandomTen().value)
-    var list = inGameWords.value
-    var currentWord = list?.get(0) ?: Noun()
+
+
+    var currentWord = inGameWords.value?.get(0) ?: Noun()
     val displayedWord = MutableLiveData<String>(currentWord.germanSingular ?: "")
     val message = MutableLiveData<String>()
     val wordNumber = MutableLiveData<Int>(0)
@@ -33,7 +38,7 @@ class ArticlesViewModel(private val nounDao: NounDao): ViewModel() {
             return
         }
         wordNumber.value = wordNumber.value?.plus(1)
-        currentWord = list.get(wordNumber.value!!)
+        currentWord = inGameWords.value?.get(wordNumber.value!!) ?: Noun()
         displayedWord.value = currentWord?.germanSingular
     }
 
