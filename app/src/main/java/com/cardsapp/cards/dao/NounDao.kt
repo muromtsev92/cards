@@ -1,6 +1,7 @@
 package com.cardsapp.cards.dao
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -29,5 +30,5 @@ interface NounDao {
     fun deleteAll(): Unit
 
     @Query("SELECT * FROM nouns ORDER BY RANDOM() LIMIT 10")
-    suspend fun getRandomTen(): List<Noun>
+     fun getRandomTen(): LiveData<List<Noun>>
 }
