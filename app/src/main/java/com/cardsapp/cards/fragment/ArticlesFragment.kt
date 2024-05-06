@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import com.cardsapp.cards.WordDatabase
 import com.cardsapp.cards.viewmodel.ArticlesViewModel
 import com.cardsapp.cards.databinding.FragmentArticlesBinding
+import com.cardsapp.cards.viewmodel.AddWordViewModel
+import com.cardsapp.cards.viewmodel.AddWordViewModelFactory
 
 class ArticlesFragment : Fragment() {
     private var _binding: FragmentArticlesBinding? = null
@@ -18,8 +22,15 @@ class ArticlesFragment : Fragment() {
     ): View? {
         _binding = FragmentArticlesBinding.inflate(inflater, container, false)
         val view = binding.root
-        viewModel = ArticlesViewModel()
 
+        val application = requireNotNull(this.activity).application
+        val database = WordDatabase.getInstance(application)
+        val nounDao = database.nounDao
+        val viewModelFactory = AddWordViewModelFactory(nounDao)
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(ArticlesViewModel::class.java)
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return view
     }
 
