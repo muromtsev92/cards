@@ -28,6 +28,6 @@ interface NounDao {
     @Query("DELETE FROM nouns")
     fun deleteAll(): Unit
 
-    @Query("SELECT * FROM nouns LIMIT 10 OFFSET ABS(RANDOM()) % MAX((SELECT COUNT(*) FROM nouns), 1)")
-    fun getRandomTen(): List<Noun>
+    @Query("SELECT * FROM nouns ORDER BY RANDOM() LIMIT 10")
+    fun getRandomTen(): LiveData<List<Noun>>
 }

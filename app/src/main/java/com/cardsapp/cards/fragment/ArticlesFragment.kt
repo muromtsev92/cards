@@ -11,6 +11,7 @@ import com.cardsapp.cards.viewmodel.ArticlesViewModel
 import com.cardsapp.cards.databinding.FragmentArticlesBinding
 import com.cardsapp.cards.viewmodel.AddWordViewModel
 import com.cardsapp.cards.viewmodel.AddWordViewModelFactory
+import com.cardsapp.cards.viewmodel.ArticlesViewModelFactory
 
 class ArticlesFragment : Fragment() {
     private var _binding: FragmentArticlesBinding? = null
@@ -26,7 +27,7 @@ class ArticlesFragment : Fragment() {
         val application = requireNotNull(this.activity).application
         val database = WordDatabase.getInstance(application)
         val nounDao = database.nounDao
-        val viewModelFactory = AddWordViewModelFactory(nounDao)
+        val viewModelFactory = ArticlesViewModelFactory(nounDao)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(ArticlesViewModel::class.java)
 
         binding.viewModel = viewModel

@@ -1,24 +1,29 @@
 package com.cardsapp.cards.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cardsapp.cards.dao.NounDao
 import com.cardsapp.cards.model.Noun
 
+
 class ArticlesViewModel(private val nounDao: NounDao): ViewModel() {
 
-    val inGameWords = nounDao.getRandomTen()
 
-    var currentWord = inGameWords[0]
-    val displayedWord = MutableLiveData<String>(currentWord.germanSingular)
+    var inGameWords: LiveData<List<Noun>> = MutableLiveData(nounDao.getRandomTen().value)
+    var list = inGameWords.value
+    var currentWord = list?.get(0) ?: Noun()
+    val displayedWord = MutableLiveData<String>(currentWord.germanSingular ?: "")
     val message = MutableLiveData<String>()
     val wordNumber = MutableLiveData<Int>(0)
 
     fun checkIfRight(ans: String){
         if (ans.uppercase() == currentWord.article.toString()){
-            message.value = "Right, " + currentWord.article.toString().lowercase() + currentWord.germanSingular + "!"
+            message.value = "Right, " + currentWord.article.toString().lowercase() + (currentWord.germanSingular
+                ?: "") + "!"
         } else {
-            message.value = "Wrong, " + currentWord.article.toString().lowercase() + currentWord.germanSingular + "!"
+            message.value = "Wrong, " + currentWord.article.toString().lowercase() + (currentWord.germanSingular
+                ?: "") + "!"
         }
     }
 
@@ -28,8 +33,8 @@ class ArticlesViewModel(private val nounDao: NounDao): ViewModel() {
             return
         }
         wordNumber.value = wordNumber.value?.plus(1)
-        currentWord = inGameWords[wordNumber.value!!]
-        displayedWord.value = currentWord.germanSingular
+        currentWord = list.get(wordNumber.value!!)
+        displayedWord.value = currentWord?.germanSingular
     }
 
 
