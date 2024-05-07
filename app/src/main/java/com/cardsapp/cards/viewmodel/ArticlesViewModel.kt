@@ -31,7 +31,7 @@ class ArticlesViewModel(private val nounDao: NounDao): ViewModel() {
 
     fun checkIfRight(ans: String){
         if (ans.uppercase() == currentWord?.article.toString()){
-            message.value = "Right, " + currentWord?.article.toString().lowercase() + (currentWord?.germanSingular
+            message.value = "Correct, " + currentWord?.article.toString().lowercase() + (currentWord?.germanSingular
                 ?: "") + " - " + (currentWord?.russian ?: " ") +  "!"
         } else {
             message.value = "Wrong, " + currentWord?.article.toString().lowercase() + (currentWord?.germanSingular
