@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.cardsapp.cards.WordDatabase
 import com.cardsapp.cards.viewmodel.ArticlesViewModel
 import com.cardsapp.cards.databinding.FragmentArticlesBinding
@@ -29,6 +31,13 @@ class ArticlesFragment : Fragment() {
         val nounDao = database.nounDao
         val viewModelFactory = ArticlesViewModelFactory(nounDao)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(ArticlesViewModel::class.java)
+
+        viewModel.gameOver.observe(viewLifecycleOwner, Observer {
+            newValue -> if (newValue){
+                val action = ArticlesFragmentDirections.actionArticlesFragmentToSummaryFragment()
+                view.findNavController().navigate(action)
+            }
+        })
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner

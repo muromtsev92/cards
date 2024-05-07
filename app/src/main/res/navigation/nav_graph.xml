@@ -27,7 +27,11 @@
         android:id="@+id/articlesFragment"
         android:name="com.cardsapp.cards.fragment.ArticlesFragment"
         android:label="fragment_articles"
-        tools:layout="@layout/fragment_articles" />
+        tools:layout="@layout/fragment_articles" >
+        <action
+            android:id="@+id/action_articlesFragment_to_summaryFragment"
+            app:destination="@id/summaryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addWordFragment"
         android:name="com.cardsapp.cards.fragment.AddWordFragment"
@@ -37,4 +41,9 @@
         android:name="com.cardsapp.cards.fragment.ShowAllFragment"
         android:label="fragment_show_all"
         tools:layout="@layout/fragment_show_all" />
+    <fragment
+        android:id="@+id/summaryFragment"
+        android:name="com.cardsapp.cards.SummaryFragment"
+        android:label="fragment_summary"
+        tools:layout="@layout/fragment_summary" />
 </navigation>
