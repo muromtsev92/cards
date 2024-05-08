@@ -20,7 +20,8 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
-            android:layout_height="73dp"
+            android:layout_height="49dp"
+            android:gravity="center|center_horizontal"
             android:text="Add words" />
 
         <RadioGroup
@@ -54,24 +55,24 @@
         <EditText
             android:id="@+id/enterGermanNounSingular"
             android:layout_width="match_parent"
-            android:layout_height="104dp"
+            android:layout_height="58dp"
             android:hint="Enter german singular"
-            android:text="@={viewModel.newGermanSingular}"/>
+            android:text="@={viewModel.newGermanSingular}" />
 
         <EditText
             android:id="@+id/enterGermanNounPlural"
             android:layout_width="match_parent"
-            android:layout_height="104dp"
+            android:layout_height="56dp"
             android:hint="Enter german plural"
             android:inputType="text"
-            android:text="@={viewModel.newGermanPlural}"/>
+            android:text="@={viewModel.newGermanPlural}" />
 
         <EditText
             android:id="@+id/enterRussianNoun"
             android:layout_width="match_parent"
-            android:layout_height="113dp"
+            android:layout_height="wrap_content"
             android:hint="Enter Russian"
-            android:text="@={viewModel.newRussian}"/>
+            android:text="@={viewModel.newRussian}" />
 
         <Button
             android:id="@+id/save_button"
