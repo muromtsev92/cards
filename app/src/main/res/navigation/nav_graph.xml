@@ -30,7 +30,8 @@
         tools:layout="@layout/fragment_articles" >
         <action
             android:id="@+id/action_articlesFragment_to_summaryFragment"
-            app:destination="@id/summaryFragment" />
+            app:destination="@id/summaryFragment"
+            app:popUpTo="@id/startFragment" />
     </fragment>
     <fragment
         android:id="@+id/addWordFragment"

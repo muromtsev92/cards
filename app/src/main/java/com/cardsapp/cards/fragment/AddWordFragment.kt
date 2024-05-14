@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.cardsapp.cards.R
 import com.cardsapp.cards.WordDatabase
@@ -34,6 +35,7 @@ class AddWordFragment : Fragment() {
 
         binding.saveButton.setOnClickListener{
             viewModel.addNoun()
+            Toast.makeText(context, "The word has been added", Toast.LENGTH_SHORT).show()
             binding.enterGermanNounPlural.setText("")
             binding.enterGermanNounSingular.setText("")
             binding.enterRussianNoun.setText("")
