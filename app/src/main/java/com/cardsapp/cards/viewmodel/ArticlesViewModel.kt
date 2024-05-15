@@ -28,12 +28,17 @@ class ArticlesViewModel(private val nounDao: NounDao): ViewModel() {
     val message = MutableLiveData<String>()
     val wordNumber = MutableLiveData<Int>(0)
     var gameOver = MutableLiveData<Boolean>(false)
+    private val _mistakes = MutableLiveData<Int>(0)
+
+    val mistakes: LiveData<Int>
+        get() = _mistakes
 
     fun checkIfRight(ans: String){
         if (ans.uppercase() == currentWord?.article.toString()){
             message.value = "Correct, " + currentWord?.article.toString().lowercase() + " " + (currentWord?.germanSingular
                 ?: "") + " - " + (currentWord?.russian ?: " ") +  "!"
         } else {
+            _mistakes.value = mistakes.value?.plus(1)
             message.value = "Wrong, " + currentWord?.article.toString().lowercase() + (currentWord?.germanSingular
                 ?: "") + " - " + (currentWord?.russian ?: " ") +  "!"
         }
