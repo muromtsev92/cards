@@ -44,7 +44,7 @@
         tools:layout="@layout/fragment_show_all" />
     <fragment
         android:id="@+id/summaryFragment"
-        android:name="com.cardsapp.cards.SummaryFragment"
+        android:name="com.cardsapp.cards.fragment.SummaryFragment"
         android:label="fragment_summary"
         tools:layout="@layout/fragment_summary" />
 </navigation>

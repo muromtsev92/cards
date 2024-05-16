@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragment.ShowAllFragment">
 
@@ -11,17 +12,32 @@
     </data>
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/words"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@{viewModel.wordsString}"/>
+        android:orientation="vertical">
 
-    </FrameLayout>
+        <EditText
+            android:id="@+id/task_name"
+            android:layout_width="match_parent"
+            android:layout_height="98dp"
+            android:gravity="center"
+            android:hint="Enter a task name"
+            android:inputType="text"
+            android:text="Alle worter sind da!" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/nouns_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:spanCount="2"/>
+
+
+
+    </LinearLayout>
 
 </layout>
 

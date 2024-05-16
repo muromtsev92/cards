@@ -1,8 +1,9 @@
-package com.cardsapp.cards.viewmodel
+package com.cardsapp.cards.viewmodel.factories
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.cardsapp.cards.dao.NounDao
+import com.cardsapp.cards.viewmodel.ArticlesViewModel
 
 class ArticlesViewModelFactory (private val nounDao: NounDao)
     : ViewModelProvider.Factory {
