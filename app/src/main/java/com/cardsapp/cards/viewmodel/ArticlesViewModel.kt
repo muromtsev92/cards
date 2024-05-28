@@ -29,11 +29,13 @@ class ArticlesViewModel(private val nounDao: NounDao): ViewModel() {
     val wordNumber = MutableLiveData<Int>(0)
     var gameOver = MutableLiveData<Boolean>(false)
     private val _mistakes = MutableLiveData<Int>(0)
+    val isChosen = MutableLiveData<Boolean>(false)
 
     val mistakes: LiveData<Int>
         get() = _mistakes
 
     fun checkIfRight(ans: String){
+        if(isChosen.value == true) return
         if (ans.uppercase() == currentWord?.article.toString()){
             message.value = "Correct, " + currentWord?.article.toString().lowercase() + " " + (currentWord?.germanSingular
                 ?: "") + " - " + (currentWord?.russian ?: " ") +  "!"
@@ -42,9 +44,11 @@ class ArticlesViewModel(private val nounDao: NounDao): ViewModel() {
             message.value = "Wrong, " + currentWord?.article.toString().lowercase() + (currentWord?.germanSingular
                 ?: "") + " - " + (currentWord?.russian ?: " ") +  "!"
         }
+        isChosen.value = true
     }
 
     fun nextWord(){
+        isChosen.value = false
         message.value = " "
         if(wordNumber.value!! >= 9){
 //            displayedWord.value = " "
@@ -56,7 +60,4 @@ class ArticlesViewModel(private val nounDao: NounDao): ViewModel() {
         currentWord = inGameWords.value?.get(wordNumber.value!!) ?: Noun()
         displayedWord.value = currentWord?.germanSingular
     }
-
-
-
 }

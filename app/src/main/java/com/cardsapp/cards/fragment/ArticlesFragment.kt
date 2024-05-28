@@ -30,6 +30,8 @@ class ArticlesFragment : Fragment() {
         val viewModelFactory = ArticlesViewModelFactory(nounDao)
         val viewModel = ViewModelProvider(this, viewModelFactory).get(ArticlesViewModel::class.java)
 
+
+
         viewModel.gameOver.observe(viewLifecycleOwner, Observer {
             newValue -> if (newValue){
                 val action = ArticlesFragmentDirections.actionArticlesFragmentToSummaryFragment()
