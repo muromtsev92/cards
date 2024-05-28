@@ -8,26 +8,26 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.cardsapp.cards.WordDatabase
-import com.cardsapp.cards.databinding.FragmentAddWordBinding
-import com.cardsapp.cards.viewmodel.AddWordViewModel
-import com.cardsapp.cards.viewmodel.factories.AddWordViewModelFactory
+import com.cardsapp.cards.databinding.FragmentAddNounBinding
+import com.cardsapp.cards.viewmodel.AddNounViewModel
+import com.cardsapp.cards.viewmodel.factories.AddNounViewModelFactory
 
-class AddWordFragment : Fragment() {
-    private var _binding: FragmentAddWordBinding? = null
+class AddNounFragment : Fragment() {
+    private var _binding: FragmentAddNounBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: FragmentAddWordBinding
+    private lateinit var viewModel: FragmentAddNounBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentAddWordBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentAddNounBinding.inflate(inflater, container, false)
         val view = binding.root
 
         val application = requireNotNull(this.activity).application
         val database = WordDatabase.getInstance(application)
         val nounDao = database.nounDao
-        val viewModelFactory = AddWordViewModelFactory(nounDao)
-        val viewModel = ViewModelProvider(this, viewModelFactory).get(AddWordViewModel::class.java)
+        val viewModelFactory = AddNounViewModelFactory(nounDao)
+        val viewModel = ViewModelProvider(this, viewModelFactory).get(AddNounViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner

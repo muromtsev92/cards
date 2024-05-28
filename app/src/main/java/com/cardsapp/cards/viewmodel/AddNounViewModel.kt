@@ -1,8 +1,5 @@
 package com.cardsapp.cards.viewmodel
 
-import android.app.Application
-import android.widget.Toast
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cardsapp.cards.dao.NounDao
@@ -10,7 +7,7 @@ import com.cardsapp.cards.model.NominativeArticle
 import com.cardsapp.cards.model.Noun
 import kotlinx.coroutines.launch
 
-class AddWordViewModel(val nounDao: NounDao): ViewModel() {
+class AddNounViewModel(val nounDao: NounDao): ViewModel() {
 
     var newArticle = NominativeArticle.NO
     var newGermanSingular = ""
@@ -34,7 +31,7 @@ class AddWordViewModel(val nounDao: NounDao): ViewModel() {
         }
     }
 
-    private fun setArticle(): Unit{
+    private fun setArticle(){
         if(derChecked){
             newArticle = NominativeArticle.DER
         } else if (dieChecked){

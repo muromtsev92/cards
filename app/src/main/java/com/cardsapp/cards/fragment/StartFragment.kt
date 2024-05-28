@@ -18,7 +18,7 @@ class StartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentStartBinding.inflate(inflater, container, false)
         val view = binging.root
         viewModel = StartViewModel()
@@ -28,8 +28,12 @@ class StartFragment : Fragment() {
             view.findNavController().navigate(R.id.action_startFragment_to_articlesFragment)
         }
 
-        binging.addWords.setOnClickListener{
+        binging.addNouns.setOnClickListener{
             view.findNavController().navigate(R.id.action_startFragment_to_addWordFragment)
+        }
+
+        binging.addVerbs.setOnClickListener{
+            view.findNavController().navigate(R.id.action_startFragment_to_addVerbFragment)
         }
 
         binging.showWords.setOnClickListener{

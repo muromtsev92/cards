@@ -22,6 +22,9 @@
             android:id="@+id/action_startFragment_to_showAllFragment"
             app:destination="@id/showAllFragment"
             app:popUpTo="@id/startFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_addVerbFragment"
+            app:destination="@id/addVerbFragment" />
     </fragment>
     <fragment
         android:id="@+id/articlesFragment"
@@ -35,7 +38,7 @@
     </fragment>
     <fragment
         android:id="@+id/addWordFragment"
-        android:name="com.cardsapp.cards.fragment.AddWordFragment"
+        android:name="com.cardsapp.cards.fragment.AddNounFragment"
         android:label="AddWordFragment" />
     <fragment
         android:id="@+id/showAllFragment"
@@ -47,4 +50,9 @@
         android:name="com.cardsapp.cards.fragment.SummaryFragment"
         android:label="fragment_summary"
         tools:layout="@layout/fragment_summary" />
+    <fragment
+        android:id="@+id/addVerbFragment"
+        android:name="com.cardsapp.cards.fragment.AddVerbFragment"
+        android:label="fragment_add_verb"
+        tools:layout="@layout/fragment_add_verb" />
 </navigation>

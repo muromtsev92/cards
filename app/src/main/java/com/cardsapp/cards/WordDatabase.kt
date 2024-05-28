@@ -5,11 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.cardsapp.cards.dao.NounDao
+import com.cardsapp.cards.dao.VerbDao
 import com.cardsapp.cards.model.Noun
+import com.cardsapp.cards.model.Verb
 
-@Database(entities = [Noun::class], version = 1, exportSchema = false)
+@Database(entities = [Noun::class, Verb::class], version = 1, exportSchema = false)
 abstract class WordDatabase: RoomDatabase() {
     abstract val nounDao: NounDao
+    abstract val verbDao: VerbDao
 
     companion object {
         @Volatile
@@ -23,7 +26,9 @@ abstract class WordDatabase: RoomDatabase() {
                         context.applicationContext,
                         WordDatabase::class.java,
                         "word_database"
-                    ).build()
+                    )
+                        .fallbackToDestructiveMigration()
+                        .build()
                     INSTANCE = instance
                 }
                 return instance

@@ -26,11 +26,19 @@
             android:textAlignment="center" />
 
         <Button
-            android:id="@+id/add_words"
+            android:id="@+id/add_verbs"
             android:layout_width="199dp"
             android:layout_height="65dp"
             android:layout_gravity="center"
-            android:text="Add words"
+            android:text="Add verbs"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/add_nouns"
+            android:layout_width="199dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:text="Add nouns"
             android:textAlignment="center" />
 
         <Button
